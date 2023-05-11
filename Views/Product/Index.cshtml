@@ -7,46 +7,69 @@
 
 <h2>Product Details</h2>
 @Html.ActionLink("Create New", "Create")
-<table class="table">
-    <tr>
-        <th></th>
-        <th></th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>Actions</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<table id="example" class="table">
+    <thead>
         <tr>
-            <td></td>
-            <td></td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            @foreach (var data in ViewBag.Categories)
-            {
-                if (item.CategoryId == @data.CategoryId)
-                {
-                    <td>
-                        @data.CategoryName
-                    </td>
-                }
-            }
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                @Html.ActionLink("Details", "ProductById", new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-            </td>
+            <th></th>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>Actions</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                @foreach (var data in ViewBag.Categories)
+                {
+                    if (item.CategoryId == @data.CategoryId)
+                    {
+                        <td>
+                            @data.CategoryName
+                        </td>
+                    }
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "ProductById", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+<script>$("#example").dataTable({
+        lengthMenu: [3,5,10],
+        scrollY: '200px',
+        scrollCollapse: true,
+
+        //paging: false,
+        //ordering: false,
+        //info: false,
+
+
+    }
+    );
+    $.get("")</script>
