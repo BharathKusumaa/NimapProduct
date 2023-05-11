@@ -10,41 +10,66 @@
     Product & Category Data
 </h2>
 <br />
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.First().ProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().CategoryName)
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="example" class="table table-striped">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CategoryName)
+            </th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+
+
 <div class="pagedList">
     @Html.PagedListPager(Model, page => Url.Action("Index", "ProductandCategory", new { page, Search = Request.QueryString["Search"] }))
 </div>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+<script>
+    $("#example").dataTable({
+        lengthMenu: [3, 5, 10],
+        scrollY: '200px',
+        scrollCollapse: true,
+
+        //paging: false,
+        //ordering: false,
+        //info: false,
+
+
+    }
+    );
+    $.get("")</script>
